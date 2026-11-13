@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Day4.Models.Category>
+
+@{
+    ViewData["Title"] = "Danh sach danh muc";
+}
+
+<h2>Danh sách danh mục</h2>
+
+<a asp-controller="Category"
+   asp-action="Create"
+   class="btn btn-primary mb-3">
+    Thêm danh mục
+</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tên danh mục</th>
+            <th>Chức năng</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@item.Id"
+                       class="btn btn-warning">
+                        Sửa
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@item.Id"
+                       class="btn btn-danger">
+                        Xóa
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
